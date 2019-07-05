@@ -114,7 +114,7 @@ public class JogoController {
 					}
 				}
 				
-				hero = new Hero(HERO, BASE_PATH+SPRITE_HERO, posicaoHeroi[0], posicaoHeroi[1], HERO_LEVEL_1, 0); 
+				hero = new Hero(String.format("%s (%s)", HERO, LEVEL_1), BASE_PATH+SPRITE_HERO, posicaoHeroi[0], posicaoHeroi[1], HERO_LEVEL_1, 0); 
 				
 				paineis[hero.getX()][hero.getY()].getStyleClass().remove(ID_CARD);
 				paineis[hero.getX()][hero.getY()].getStyleClass().add(ID_HERO);
@@ -705,14 +705,18 @@ public class JogoController {
 	
 	private void verificaLevelHeroi() {
 		if(rodadas <= LEVEL1_TURN) {
+			hero.setName(String.format("%s (%s)", HERO, LEVEL_1));
 			hero.setHpHero(HERO_LEVEL_1);
 		}else
 			if(rodadas <= LEVEL2_TURN) {
+				hero.setName(String.format("%s (%s)", HERO, LEVEL_2));
 				hero.setHpHero(HERO_LEVEL_2);
 			}else
 				if(rodadas <= LEVEL3_TURN) {
+					hero.setName(String.format("%s (%s)", HERO, LEVEL_3));
 					hero.setHpHero(HERO_LEVEL_3);
 				}else {
+					hero.setName(String.format("%s (%s)", HERO, LEVEL_4));
 					hero.setHpHero(HERO_LEVEL_4);
 				}
 	}

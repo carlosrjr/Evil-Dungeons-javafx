@@ -9,7 +9,8 @@ Equipe:
 
 - Carlos Roberto
 - Daniel Ferreira 
-- Guilherme Magnus 
+- Guilherme Magnus
+- Carlos Guimarâes
 
 Tecnologia usada: JavaFX
 

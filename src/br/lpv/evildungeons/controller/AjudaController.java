@@ -16,8 +16,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -25,7 +23,7 @@ public class AjudaController {
 	private ChangeScreen changeScreen;
 	private BorderPane bp;
 	private AudioClip player;
-	private MediaPlayer soundEffect;
+	private AudioClip soundEffect;
 	private Integer selecionado;
 	
 	@FXML
@@ -51,7 +49,7 @@ public class AjudaController {
 	}
 	
 	private void selecionarOpcao() {
-		soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SPELL).toExternalForm()));
+		soundEffect = new AudioClip((getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SPELL).toExternalForm()));
 		soundEffect.play();
 		onActionInicio();
 	}

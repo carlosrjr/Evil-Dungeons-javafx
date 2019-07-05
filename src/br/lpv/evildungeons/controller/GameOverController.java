@@ -14,8 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -26,7 +24,7 @@ public class GameOverController {
 	private BorderPane bp;
 	private String moedas;
 	private AudioClip player;
-	private MediaPlayer gameoverSound;
+	private AudioClip gameoverSound;
 	private Integer selecionado;
 	
 	@FXML
@@ -38,7 +36,7 @@ public class GameOverController {
 				moedasColetadas.setText(moedas);
 				player.stop();
 		
-				gameoverSound = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_GAME_OVER).toExternalForm()));
+				gameoverSound = new AudioClip((getClass().getResource(BASE_PATH+PATH_SOUND_GAME_OVER).toExternalForm()));
 				gameoverSound.play();
 			}
 		});

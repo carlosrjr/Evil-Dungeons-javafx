@@ -37,7 +37,7 @@ public class EvilDugeonsController {
 		
 		player = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_DUNGEON).toExternalForm());
 		
-		player.setCycleCount(MediaPlayer.INDEFINITE);
+		player.setCycleCount(AudioClip.INDEFINITE);
 		
 		player.play();
 		selecionado = 0;

@@ -26,8 +26,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -67,7 +65,7 @@ public class JogoController {
 	
 	private AudioClip player;
 	
-	private MediaPlayer soundEffect;
+	private AudioClip soundEffect;
 	
 	// Valor moeda
 	private int[] dropCoin = {1, 1, 1, 1, 1, 1, 3, 3, 7, 3, 3, 3, 1, 6, 1, 1, 1, 3, 3, 3, 6, 6, 7, 10, 12};
@@ -177,7 +175,7 @@ public class JogoController {
 			moveRight();
 			break;
 		case BACK_SPACE:
-			onActionInicio();
+			selecionarOpcao();
 			break;
 		case M:
 			onMouseClicked();
@@ -740,14 +738,14 @@ public class JogoController {
 				hero.setHpHero(HERO_LEVEL_2);
 				hero.setHealth(HERO_LEVEL_2);
 				exibirCard(hero);
-				soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_LEVEL_UP).toExternalForm()));
+				soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_LEVEL_UP).toExternalForm());
 				soundEffect.play();
 			}else
 				if(rodadas == LEVEL2_TURN+1) {
 					hero.setName(String.format("%s (%s)", HERO, LEVEL_3));
 					hero.setHpHero(HERO_LEVEL_3);
 					hero.setHealth(HERO_LEVEL_3);
-					soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_LEVEL_UP).toExternalForm()));
+					soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_LEVEL_UP).toExternalForm());
 					soundEffect.play();
 					exibirCard(hero);
 				}else 
@@ -755,7 +753,7 @@ public class JogoController {
 						hero.setName(String.format("%s (%s)", HERO, LEVEL_4));
 						hero.setHpHero(HERO_LEVEL_4);
 						hero.setHealth(HERO_LEVEL_4);
-						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_LEVEL_UP).toExternalForm()));
+						soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_LEVEL_UP).toExternalForm());
 						soundEffect.play();
 						exibirCard(hero);
 					}
@@ -780,12 +778,12 @@ public class JogoController {
 			if(((Item)cards[hero.getX()][hero.getY()]).getType() == HEALTH) {
 				hero.setItemSuporte((Item)cards[hero.getX()][hero.getY()]);
 				numeroPocoes--;
-				soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_POTION).toExternalForm()));
+				soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_POTION).toExternalForm());
 				soundEffect.play();
 			} else
 				if(((Item)cards[hero.getX()][hero.getY()]).getType() == GOLD) {
 					hero.setItemSuporte((Item)cards[hero.getX()][hero.getY()]);
-					soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_COIN).toExternalForm()));
+					soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_COIN).toExternalForm());
 					soundEffect.play();
 				}else
 					if(((Item)cards[hero.getX()][hero.getY()]).getType() == POISON){
@@ -830,10 +828,10 @@ public class JogoController {
 						cards[posicaoHeroi[0]][posicaoHeroi[1]] = gerarMoeda(posicaoHeroi[0], posicaoHeroi[1]);;
 						exibirCard(cards[posicaoHeroi[0]][posicaoHeroi[1]]);
 						numeroMonstro--;
-						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_DAMAGE).toExternalForm()));
+						soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_DAMAGE).toExternalForm());
 						soundEffect.play();
 					}else {
-						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_DEATH).toExternalForm()));
+						soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_DEATH).toExternalForm());
 						soundEffect.play();
 						hero.setHealth(0);
 						exibirCard(hero);
@@ -843,10 +841,10 @@ public class JogoController {
 					}
 				}else {
 					if(hero.getItemAtaque().getType() == SWORD){
-						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SWORD).toExternalForm()));
+						soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SWORD).toExternalForm());
 						soundEffect.play();
 					}else {
-						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SPELL).toExternalForm()));
+						soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SPELL).toExternalForm());
 						soundEffect.play();
 					}
 					
@@ -888,7 +886,7 @@ public class JogoController {
 	}
 	
 	private void playSoundEvent(String path) {
-		soundEffect = new MediaPlayer(new Media(getClass().getResource(path).toExternalForm()));
+		soundEffect = new AudioClip(getClass().getResource(path).toExternalForm());
 		soundEffect.play();
 	}
 
@@ -998,6 +996,12 @@ public class JogoController {
 		fadeTransition.setToValue(0);
 		
 		fadeTransition.play();
+	}
+	
+	private void selecionarOpcao() {
+		soundEffect = new AudioClip(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SPELL).toExternalForm());
+		soundEffect.play();
+		onActionInicio();
 	}
 	
 	@FXML

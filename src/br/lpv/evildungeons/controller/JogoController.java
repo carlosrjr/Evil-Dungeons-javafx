@@ -11,9 +11,11 @@ import br.lpv.evildungeons.model.Item;
 import br.lpv.evildungeons.view.ChangeScreen;
 import br.lpv.evildungeons.view.EnumScenes;
 import br.lpv.evildungeons.view.OnChangeScreen;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,6 +30,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class JogoController {
 	@FXML private GridPane gp;
@@ -64,7 +67,7 @@ public class JogoController {
 	
 	private AudioClip player;
 	
-	private MediaPlayer soundEvent;
+	private MediaPlayer soundEffect;
 	
 	// Valor moeda
 	private int[] dropCoin = {1, 1, 1, 1, 1, 1, 3, 3, 7, 3, 3, 3, 1, 6, 1, 1, 1, 3, 3, 3, 6, 6, 7, 10, 12};
@@ -728,21 +731,34 @@ public class JogoController {
 	}
 	
 	private void verificaLevelHeroi() {
-		if(rodadas <= LEVEL1_TURN) {
+		if(rodadas == 1) {
 			hero.setName(String.format("%s (%s)", HERO, LEVEL_1));
 			hero.setHpHero(HERO_LEVEL_1);
 		}else
-			if(rodadas <= LEVEL2_TURN) {
+			if(rodadas == LEVEL1_TURN+1) {
 				hero.setName(String.format("%s (%s)", HERO, LEVEL_2));
 				hero.setHpHero(HERO_LEVEL_2);
+				hero.setHealth(HERO_LEVEL_2);
+				exibirCard(hero);
+				soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_LEVEL_UP).toExternalForm()));
+				soundEffect.play();
 			}else
-				if(rodadas <= LEVEL3_TURN) {
+				if(rodadas == LEVEL2_TURN+1) {
 					hero.setName(String.format("%s (%s)", HERO, LEVEL_3));
 					hero.setHpHero(HERO_LEVEL_3);
-				}else {
-					hero.setName(String.format("%s (%s)", HERO, LEVEL_4));
-					hero.setHpHero(HERO_LEVEL_4);
-				}
+					hero.setHealth(HERO_LEVEL_3);
+					soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_LEVEL_UP).toExternalForm()));
+					soundEffect.play();
+					exibirCard(hero);
+				}else 
+					if(rodadas == LEVEL3_TURN+1){
+						hero.setName(String.format("%s (%s)", HERO, LEVEL_4));
+						hero.setHpHero(HERO_LEVEL_4);
+						hero.setHealth(HERO_LEVEL_4);
+						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_LEVEL_UP).toExternalForm()));
+						soundEffect.play();
+						exibirCard(hero);
+					}
 	}
 
 	private void verificaMovimento() {
@@ -764,13 +780,13 @@ public class JogoController {
 			if(((Item)cards[hero.getX()][hero.getY()]).getType() == HEALTH) {
 				hero.setItemSuporte((Item)cards[hero.getX()][hero.getY()]);
 				numeroPocoes--;
-				soundEvent = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_POTION).toExternalForm()));
-				soundEvent.play();
+				soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_POTION).toExternalForm()));
+				soundEffect.play();
 			} else
 				if(((Item)cards[hero.getX()][hero.getY()]).getType() == GOLD) {
 					hero.setItemSuporte((Item)cards[hero.getX()][hero.getY()]);
-					soundEvent = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_COIN).toExternalForm()));
-					soundEvent.play();
+					soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_COIN).toExternalForm()));
+					soundEffect.play();
 				}else
 					if(((Item)cards[hero.getX()][hero.getY()]).getType() == POISON){
 						hero.setItemSuporte((Item)cards[hero.getX()][hero.getY()]);
@@ -807,15 +823,18 @@ public class JogoController {
 				if(hero.getItemAtaque() == null) {
 					// Comparando a vida do herói com a vida do monstro, caso a vida do herói seja menor, finaliza o jogo.
 					if(hero.getHealth() > ((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getHealth()) {
+						animacaoFadeOut(paineis[((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getX()][((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getY()]);
+						animacaoFadeIn(paineis[((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getX()][((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getY()]);
+						
 						hero.setHealth(hero.getHealth() - ((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getHealth());
 						cards[posicaoHeroi[0]][posicaoHeroi[1]] = gerarMoeda(posicaoHeroi[0], posicaoHeroi[1]);;
 						exibirCard(cards[posicaoHeroi[0]][posicaoHeroi[1]]);
 						numeroMonstro--;
-						soundEvent = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_DAMAGE).toExternalForm()));
-						soundEvent.play();
+						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_DAMAGE).toExternalForm()));
+						soundEffect.play();
 					}else {
-						soundEvent = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_DEATH).toExternalForm()));
-						soundEvent.play();
+						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_DEATH).toExternalForm()));
+						soundEffect.play();
 						hero.setHealth(0);
 						exibirCard(hero);
 						
@@ -824,16 +843,20 @@ public class JogoController {
 					}
 				}else {
 					if(hero.getItemAtaque().getType() == SWORD){
-						soundEvent = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SWORD).toExternalForm()));
-						soundEvent.play();
+						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SWORD).toExternalForm()));
+						soundEffect.play();
 					}else {
-						soundEvent = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SPELL).toExternalForm()));
-						soundEvent.play();
+						soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SPELL).toExternalForm()));
+						soundEffect.play();
 					}
-						
+					
+					animacaoFadeOut(paineis[((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getX()][((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getY()]);
+					animacaoFadeIn(paineis[((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getX()][((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getY()]);
+					
 					// Verificando a vida do monstro com o poder de ataque da arma
 					if(((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getHealth() > hero.getItemAtaque().getValue()) {
 						((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).setHealth(((Humanoid)cards[posicaoHeroi[0]][posicaoHeroi[1]]).getHealth() - hero.getItemAtaque().getValue());
+						
 						
 						exibirCard(cards[posicaoHeroi[0]][posicaoHeroi[1]]);
 						hero.setItemAtaque(null);
@@ -865,8 +888,8 @@ public class JogoController {
 	}
 	
 	private void playSoundEvent(String path) {
-		soundEvent = new MediaPlayer(new Media(getClass().getResource(path).toExternalForm()));
-		soundEvent.play();
+		soundEffect = new MediaPlayer(new Media(getClass().getResource(path).toExternalForm()));
+		soundEffect.play();
 	}
 
 	/**
@@ -953,6 +976,28 @@ public class JogoController {
 		}else {
 			sound.setImage(new Image(getClass().getResource(BASE_PATH+SOUND_OFF).toExternalForm()));
 		}		
+	}
+	
+	private void animacaoFadeIn(Node node) {
+		FadeTransition fadeTransition = new FadeTransition();
+		fadeTransition.setDuration(Duration.millis(TEMPO_ANIMACAO));
+		fadeTransition.setNode(node);
+		fadeTransition.setRate(RATE_ANIMACAO);
+		fadeTransition.setFromValue(0);
+		fadeTransition.setToValue(1);
+		
+		fadeTransition.play();
+	}
+	
+	private void animacaoFadeOut(Node node) {
+		FadeTransition fadeTransition = new FadeTransition();
+		fadeTransition.setDuration(Duration.millis(TEMPO_ANIMACAO));
+		fadeTransition.setNode(node);
+		fadeTransition.setRate(RATE_ANIMACAO);
+		fadeTransition.setFromValue(1);
+		fadeTransition.setToValue(0);
+		
+		fadeTransition.play();
 	}
 	
 	@FXML

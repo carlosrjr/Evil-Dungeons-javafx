@@ -115,6 +115,7 @@ public class Constantes {
 	public static final String PATH_SOUND_COIN = "view/sound/coin.wav";
 	public static final String PATH_SOUND_TAKE_SWORD = "view/sound/take_sword.mp3";
 	public static final String PATH_SOUND_TAKE_WAND = "view/sound/take_wand.wav";
+	public static final String PATH_SOUND_LEVEL_UP = "view/sound/levelup.wav";
 	
 	public static final String HERO = "Herói";
 	public static final String GOBLIN = "Goblin";
@@ -173,4 +174,7 @@ public class Constantes {
 
 	public static final String LEVEL_BOSS = "BOSS Level";
 	public static final String BOSS = "BOSS";
+	
+	public static final int TEMPO_ANIMACAO = 1000;
+	public static final float RATE_ANIMACAO = 2f;
 }

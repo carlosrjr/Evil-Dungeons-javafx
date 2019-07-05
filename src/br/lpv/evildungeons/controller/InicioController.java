@@ -1,12 +1,6 @@
 package br.lpv.evildungeons.controller;
 
-import static br.lpv.evildungeons.tools.Constantes.BASE_PATH;
-import static br.lpv.evildungeons.tools.Constantes.EVIL_DUNGEONS;
-import static br.lpv.evildungeons.tools.Constantes.ICONE_SELECAO;
-import static br.lpv.evildungeons.tools.Constantes.PATH_SOUND_HIT_SPELL;
-import static br.lpv.evildungeons.tools.Constantes.PATH_SOUND_TAKE_WAND;
-import static br.lpv.evildungeons.tools.Constantes.SOUND_OFF;
-import static br.lpv.evildungeons.tools.Constantes.SOUND_ON;
+import static br.lpv.evildungeons.tools.Constantes.*;
 
 import java.io.IOException;
 
@@ -41,7 +35,6 @@ public class InicioController {
 	private AudioClip player;
 	private Integer selecionado;
 	private MediaPlayer soundEffect;
-	
 	
 	@FXML
 	protected void initialize() {
@@ -114,7 +107,7 @@ public class InicioController {
 	}
 	
 	private void verificarOpcao() {
-		soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_TAKE_WAND).toExternalForm()));
+		soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_SELECT).toExternalForm()));
 		soundEffect.play();
 		
 		if(selecionado == 0) {

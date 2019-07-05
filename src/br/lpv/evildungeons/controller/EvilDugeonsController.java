@@ -79,7 +79,7 @@ public class EvilDugeonsController {
 	}
 	
 	private void verificaOpcao() {
-		soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_TAKE_WAND).toExternalForm()));
+		soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_SELECT).toExternalForm()));
 		soundEffect.play();
 		
 		if(selecionado == 0) {

@@ -27,6 +27,7 @@ public class GameOverController {
 	private String moedas;
 	private AudioClip player;
 	private MediaPlayer gameoverSound;
+	private Integer selecionado;
 	
 	@FXML
 	protected void initialize() {
@@ -36,7 +37,7 @@ public class GameOverController {
 				inicializando(dados);
 				moedasColetadas.setText(moedas);
 				player.stop();
-				
+		
 				gameoverSound = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_GAME_OVER).toExternalForm()));
 				gameoverSound.play();
 			}
@@ -51,7 +52,7 @@ public class GameOverController {
 		gameoverSound.stop();
 		player.play();
 		changeScreen(EnumScenes.INICIO, BASE_PATH+EnumScenes.INICIO.getPath(), EnumScenes.INICIO.getDescricao(), EnumScenes.INICIO.getWidth(), EnumScenes.INICIO.getHeight());
-		changeScreen.changeScreen(EnumScenes.INICIO, bp, changeScreen, player);
+		changeScreen.changeScreen(EnumScenes.INICIO, bp, changeScreen, player, selecionado);
 	}
 	
 	/**
@@ -62,7 +63,7 @@ public class GameOverController {
 		gameoverSound.stop();
 		player.play();
 		changeScreen(EnumScenes.JOGO, BASE_PATH+EnumScenes.JOGO.getPath(), EnumScenes.JOGO.getDescricao(), EnumScenes.JOGO.getWidth(), EnumScenes.JOGO.getHeight());
-		changeScreen.changeScreen(EnumScenes.JOGO, bp, changeScreen, player);
+		changeScreen.changeScreen(EnumScenes.JOGO, bp, changeScreen, player, selecionado);
 	}
 
 	
@@ -110,6 +111,7 @@ public class GameOverController {
 			else if(dado instanceof ChangeScreen) changeScreen = (ChangeScreen)dado;
 			else if(dado instanceof String) moedas = (String)dado;
 			else if(dado instanceof AudioClip) player = (AudioClip)dado;
+			else if(dado instanceof Integer) selecionado = (Integer)dado;
 		}
 	}
 }

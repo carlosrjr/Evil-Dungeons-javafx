@@ -4,6 +4,7 @@ public class Hero extends Humanoid {
 	private int attack;
 	private Item itemAtaque;
 	private Item itemSuporte;
+	private int hpHero;
 	
 	public static final int DEFAULT_HEALTH = 10;
 	
@@ -24,10 +25,15 @@ public class Hero extends Humanoid {
 	}
 	
 	public Hero(String nome, String sprite, int x, int y, int health, int attack, Item itemAtaque, Item itemSuporte) {
+		this(nome, sprite, x, y, health, attack, itemAtaque, itemSuporte, DEFAULT_HEALTH);
+	}
+	
+	public Hero(String nome, String sprite, int x, int y, int health, int attack, Item itemAtaque, Item itemSuporte, int hpHero) {
 		super(nome, sprite, x, y, health);
 		this.attack = attack;
 		this.itemAtaque = itemAtaque;
 		this.itemSuporte = itemSuporte;
+		this.hpHero = hpHero;
 	}
 
 	public int getAttack() {
@@ -52,6 +58,14 @@ public class Hero extends Humanoid {
 
 	public void setItemSuporte(Item itemSuporte) {
 		this.itemSuporte = itemSuporte;
+	}
+
+	public int getHpHero() {
+		return hpHero;
+	}
+
+	public void setHpHero(int hpHero) {
+		this.hpHero = hpHero;
 	}
 
 	@Override

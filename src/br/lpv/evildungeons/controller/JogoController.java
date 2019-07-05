@@ -45,6 +45,9 @@ public class JogoController {
     @FXML private Pane painel11;
 
     @FXML private Label lblCoin;
+    @FXML private Label lblLevel;
+    
+    @FXML private ImageView sound;
     
 	private BorderPane bp;
 	private ChangeScreen changeScreen;
@@ -57,6 +60,8 @@ public class JogoController {
 	private int numeroArmas;
 	private int rodadas;
 	
+	private Integer selecionado;
+	
 	private AudioClip player;
 	
 	private MediaPlayer soundEvent;
@@ -64,20 +69,16 @@ public class JogoController {
 	// Valor moeda
 	private int[] dropCoin = {1, 1, 1, 1, 1, 1, 3, 3, 7, 3, 3, 3, 1, 6, 1, 1, 1, 3, 3, 3, 6, 6, 7, 10, 12};
 
-	// HP monstros
-	//private int[] hpEnemy = {3, 3, 7, 3, 3, 7, 3, 2, 6, 9, 8, 2, 4, 2, 2, 2, 9, 8, 3, 3, 3, 6, 6, 7, 10, 12, 10, 12, 15, 25, 30};
-	private int[] hpEnemy = {3,4,5};
-	//private int[] hpEnemy = {1};
-
 	// Poder de ataque das armas
-	private int[] wandAttack = {3,5,7,9,12};
-	private int[] sword1Attack = {8,10,12};
+	private int[] wandAttack = {5,7,9,12,15,19};
+	private int[] sword1Attack = {8,10,12,15};
 	private int[] sword2Attack = {5,6,7,8};
 	private int[] sword3Attack = {4,5};
 	private int[] sword4Attack = {3,4};
 	
 	// Poder de cura ou dano das poçoes.
 	private int[] potionPower = {3,5};
+	private boolean bossTurn = false;
 
 	/*
 	 * 1 - UP
@@ -113,7 +114,7 @@ public class JogoController {
 					}
 				}
 				
-				hero = new Hero(HERO, BASE_PATH+SPRITE_HERO, posicaoHeroi[0], posicaoHeroi[1], Hero.DEFAULT_HEALTH, 0); 
+				hero = new Hero(HERO, BASE_PATH+SPRITE_HERO, posicaoHeroi[0], posicaoHeroi[1], HERO_LEVEL_1, 0); 
 				
 				paineis[hero.getX()][hero.getY()].getStyleClass().remove(ID_CARD);
 				paineis[hero.getX()][hero.getY()].getStyleClass().add(ID_HERO);
@@ -144,22 +145,26 @@ public class JogoController {
 				exibirCard(cards[2][0]);
 				exibirCard(cards[2][1]);
 				exibirCard(cards[2][2]);
+				verificaSom();
 			}
 		});
 		
 		numeroMonstro = 0;
 		numeroPocoes = 0;
 		numeroArmas = 0;
-		rodadas = 0;
+		rodadas = 1;
+		lblLevel.setText(LEVEL_1);
 	}
 
 	@FXML
 	public void onKeyPressed(KeyEvent event) {
 		switch (event.getCode()) {
 		case UP:
+			verificaSelecionado();
 			moveUp();
 			break;
 		case DOWN:
+			verificaSelecionado();
 			moveDown();
 			break;
 		case LEFT:
@@ -168,12 +173,28 @@ public class JogoController {
 		case RIGHT:
 			moveRight();
 			break;
-
+		case BACK_SPACE:
+			onActionInicio();
+			break;
+		case M:
+			onMouseClicked();
+			break;
+			
 		default:
 			break;
 		}
 		
 		verificaMovimento();
+		verificaLevel();
+		verificaLevelHeroi();
+	}
+
+	private void verificaSelecionado() {
+		if(selecionado == 0) {
+			selecionado = 1;
+		}else {
+			selecionado = 0;
+		}
 	}
 
 	private int[] moverHeroi(int x, int y) {
@@ -214,7 +235,6 @@ public class JogoController {
 	}
 	
 	private void seguir() {
-		System.out.println(rodadas);
 		if(hero.getX() == 0 && hero.getY() == 0) {
 			if(movimento == 2) {
 				cards[0][2].setPosicao(0, 1);
@@ -473,6 +493,12 @@ public class JogoController {
 	}
 	
 	private Card gerarCard(int x, int y) {
+		if(bossTurn) {
+			Card card = gerarHumanoid(x, y);
+			bossTurn = false;
+			return card;
+		}
+		
 		/*
 		 * 0 - Item
 		 * 1 - Humanoid
@@ -550,8 +576,10 @@ public class JogoController {
 		}else {
 			if(numeroMonstro < MAXIMO_MONSTROS) {
 				return gerarHumanoid(x, y);
-			}else {
+			} if(numeroArmas == MAXIMO_ARMAS && numeroPocoes == MAXIMO_POCOES) {
 				return gerarMoeda(x, y);
+			} else {
+				return gerarItem(x, y);
 			}
 				
 		}
@@ -616,22 +644,79 @@ public class JogoController {
 		 * 1 - Skeleton
 		 * 2 - Mosca 
 		 */
+		
+		String name = "";
 		int gerarHumanoid = (int)(Math.random()*3);
 		numeroMonstro++;
+		int hp[];
+		
+		if(bossTurn) {
+			hp = MONSTER_BOSS;
+			verificaLevel();
+		}else
+			if(rodadas <= LEVEL1_TURN) {
+				hp = MONSTER_LEVEL_1;
+			}else
+				if(rodadas <= LEVEL2_TURN) {
+					hp = MONSTER_LEVEL_2;
+				}else
+					if(rodadas <= LEVEL3_TURN) {
+						hp = MONSTER_LEVEL_3;
+					}else {
+						hp = MONSTER_LEVEL_4;
+					}
 		
 		switch (gerarHumanoid) {
 		case 0:
-			return new Humanoid(GOBLIN, BASE_PATH+SPRITE_GOBLIN, x, y, hpEnemy[(int)(Math.random()*(hpEnemy.length-1))]);
+			name = ((bossTurn) ? String.format("%s (%s)", GOBLIN, BOSS) : GOBLIN);
+			return new Humanoid(name, BASE_PATH+SPRITE_GOBLIN, x, y, hp[(int)(Math.random()*(hp.length-1))]);
 		case 1:
-			return new Humanoid(SKELETON, BASE_PATH+SPRITE_SKELETON, x, y, hpEnemy[(int)(Math.random()*(hpEnemy.length-1))]);
+			name = ((bossTurn) ? String.format("%s (%s)", SKELETON, BOSS) : SKELETON);
+			return new Humanoid(name, BASE_PATH+SPRITE_SKELETON, x, y, hp[(int)(Math.random()*(hp.length-1))]);
 		case 2:
-			return new Humanoid(MOSCA, BASE_PATH+SPRITE_MOSCA, x, y, hpEnemy[(int)(Math.random()*(hpEnemy.length-1))]);
+			name = ((bossTurn) ? String.format("%s (%s)", MOSCA, BOSS) : MOSCA);
+			return new Humanoid(name, BASE_PATH+SPRITE_MOSCA, x, y, hp[(int)(Math.random()*(hp.length-1))]);
 			
 		default:
-			return new Humanoid(GOBLIN, BASE_PATH+SPRITE_GOBLIN, x, y, hpEnemy[(int)(Math.random()*(hpEnemy.length-1))]);
+			name = ((bossTurn) ? String.format("%s (%s)", GOBLIN, BOSS) : GOBLIN);
+			return new Humanoid(name, BASE_PATH+SPRITE_GOBLIN, x, y, hp[(int)(Math.random()*(hp.length-1))]);
 		}
+		
+		
 	}
 	
+	private void verificaLevel() {
+		if(rodadas % BOSS_TURN == 0) {
+			lblLevel.setText(LEVEL_BOSS);
+			bossTurn=true;
+		}else
+			if(rodadas <= LEVEL1_TURN) {
+				lblLevel.setText(LEVEL_1);
+			}else
+				if(rodadas <= LEVEL2_TURN) {
+					lblLevel.setText(LEVEL_2);
+				}else
+					if(rodadas <= LEVEL3_TURN) {
+						lblLevel.setText(LEVEL_3);
+					}else {
+						lblLevel.setText(LEVEL_4);
+					}
+	}
+	
+	private void verificaLevelHeroi() {
+		if(rodadas <= LEVEL1_TURN) {
+			hero.setHpHero(HERO_LEVEL_1);
+		}else
+			if(rodadas <= LEVEL2_TURN) {
+				hero.setHpHero(HERO_LEVEL_2);
+			}else
+				if(rodadas <= LEVEL3_TURN) {
+					hero.setHpHero(HERO_LEVEL_3);
+				}else {
+					hero.setHpHero(HERO_LEVEL_4);
+				}
+	}
+
 	private void verificaMovimento() {
 		// Removendo css Hero
 		paineis[hero.getX()][hero.getY()].getStyleClass().remove(ID_HERO);
@@ -669,6 +754,7 @@ public class JogoController {
 								numeroArmas--;
 								hero.setItemAtaque((Item)cards[hero.getX()][hero.getY()]);
 							}
+							
 							if(((Item)cards[hero.getX()][hero.getY()]).getType() == SWORD) {
 								playSoundEvent(BASE_PATH+PATH_SOUND_TAKE_SWORD);
 							}else {
@@ -687,7 +773,7 @@ public class JogoController {
 			
 			cards[hero.getX()][hero.getY()] = hero;
 			rodadas++;
-			System.out.println("rodada: "+rodadas);
+			verificaLevel();
 		}else
 			if(cards[posicaoHeroi[0]][posicaoHeroi[1]] instanceof Humanoid) {
 				if(hero.getItemAtaque() == null) {
@@ -706,7 +792,7 @@ public class JogoController {
 						exibirCard(hero);
 						
 						changeScreen(EnumScenes.FIM_JOGO, BASE_PATH+EnumScenes.FIM_JOGO.getPath(), EnumScenes.FIM_JOGO.getDescricao(), EnumScenes.FIM_JOGO.getWidth(), EnumScenes.FIM_JOGO.getHeight());
-						changeScreen.changeScreen(EnumScenes.FIM_JOGO, bp, changeScreen, lblCoin.getText(), player);
+						changeScreen.changeScreen(EnumScenes.FIM_JOGO, bp, changeScreen, lblCoin.getText(), player, selecionado);
 					}
 				}else {
 					if(hero.getItemAtaque().getType() == SWORD){
@@ -738,7 +824,7 @@ public class JogoController {
 					}
 				}
 				rodadas++;
-				System.out.println("rodada: "+rodadas);
+				verificaLevel();
 			}
 		
 		cards[hero.getX()][hero.getY()] = hero;
@@ -787,7 +873,7 @@ public class JogoController {
 			if(((Hero) card).getItemSuporte() != null) {
 				if(((Hero) card).getItemSuporte().getType() == HEALTH) {
 					((Hero) card).setHealth((
-						((((Hero) card).getHealth() + ((Hero) card).getItemSuporte().getValue()) > Hero.DEFAULT_HEALTH ? Hero.DEFAULT_HEALTH : ((Hero) card).getHealth() + ((Hero) card).getItemSuporte().getValue())
+						((((Hero) card).getHealth() + ((Hero) card).getItemSuporte().getValue()) > ((((Hero) card).getHpHero())) ? ((((Hero) card).getHpHero())) : ((Hero) card).getHealth() + ((Hero) card).getItemSuporte().getValue())
 					));
 					((Hero)card).setItemSuporte(null);
 				}else
@@ -814,7 +900,7 @@ public class JogoController {
 		}
 
 		if(card instanceof Humanoid) {
-			lblHealth.setText((card instanceof Hero) ? String.format("%d/%d", ((Hero)card).getHealth(), Hero.DEFAULT_HEALTH) : String.format("%d", ((Humanoid) card).getHealth()));
+			lblHealth.setText((card instanceof Hero) ? String.format("%d/%d", ((Hero)card).getHealth(), ((((Hero) card).getHpHero()))) : String.format("%d", ((Humanoid) card).getHealth()));
 			lblHealth.setStyle("");
 			
 			heart.setImage(new Image(getClass().getResource(BASE_PATH+SPRITE_HEART).toExternalForm()));
@@ -833,13 +919,35 @@ public class JogoController {
 		}
 	}
 	
+	public void verificaSom() {
+		if(player.getVolume() == 1) {
+			sound.setImage(new Image(getClass().getResource(BASE_PATH+SOUND_ON).toExternalForm()));
+		}else {
+			sound.setImage(new Image(getClass().getResource(BASE_PATH+SOUND_OFF).toExternalForm()));
+		}		
+	}
+	
+	@FXML
+	public void onMouseClicked() {
+		if(player.getVolume() == 1) {
+			sound.setImage(new Image(getClass().getResource(BASE_PATH+SOUND_OFF).toExternalForm()));
+			player.setVolume(0);
+			player.stop();;
+		}else {
+			sound.setImage(new Image(getClass().getResource(BASE_PATH+SOUND_ON).toExternalForm()));
+			player.setVolume(1);
+			player.play();
+		}
+	}
+	
 	/**
 	 * Solicita a mudança do <code>Scene</code> para o <code>Scene</code> do início.
 	 */
 	@FXML
 	public void onActionInicio() {
+		selecionado = 0;
 		changeScreen(EnumScenes.INICIO, BASE_PATH+EnumScenes.INICIO.getPath(), EnumScenes.INICIO.getDescricao(), EnumScenes.INICIO.getWidth(), EnumScenes.INICIO.getHeight());
-		changeScreen.changeScreen(EnumScenes.INICIO, bp, changeScreen, player);
+		changeScreen.changeScreen(EnumScenes.INICIO, bp, changeScreen, player, selecionado);
 	}
 	
 	/**
@@ -885,6 +993,7 @@ public class JogoController {
 			if(dado instanceof BorderPane) bp = (BorderPane)dado;
 			else if(dado instanceof ChangeScreen) changeScreen = (ChangeScreen)dado;
 			else if(dado instanceof AudioClip) player = (AudioClip)dado;
+			else if(dado instanceof Integer) selecionado = (Integer)dado;
 		}
 	}
 }

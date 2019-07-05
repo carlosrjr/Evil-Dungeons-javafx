@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<BorderPane fx:id="bp" prefHeight="717.0" prefWidth="735.0" styleClass="background-default" stylesheets="@../css/EvilDungeons.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lpv.evildungeons.controller.EvilDugeonsController">
+<BorderPane fx:id="bp" onKeyPressed="#onKeyPressed" prefHeight="717.0" prefWidth="735.0" styleClass="background-default" stylesheets="@../css/EvilDungeons.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lpv.evildungeons.controller.EvilDugeonsController">
 	<children>
       <VBox prefHeight="534.0" prefWidth="529.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -32,9 +32,9 @@
 		         <children>
 		            <HBox alignment="CENTER" prefHeight="123.0" prefWidth="621.0">
 		               <children>
-		                  <VBox prefHeight="186.0" prefWidth="526.0">
+		                  <VBox alignment="CENTER_RIGHT" prefHeight="124.0" prefWidth="555.0">
 		                     <children>
-		                        <ImageView fitHeight="150.0" fitWidth="499.0" pickOnBounds="true" preserveRatio="true">
+		                        <ImageView fitHeight="124.0" fitWidth="534.0" pickOnBounds="true" preserveRatio="true">
 		                           <image>
 		                              <Image url="@../img/titulo.png" />
 		                           </image>
@@ -47,6 +47,11 @@
 		                        <Insets top="20.0" />
 		                     </HBox.margin>
 		                  </VBox>
+                        <ImageView fx:id="sound" fitHeight="81.0" fitWidth="74.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/sound.png" />
+                           </image>
+                        </ImageView>
 		               </children>
 		            </HBox>
 		            <HBox alignment="BOTTOM_CENTER" prefHeight="481.0" prefWidth="735.0">
@@ -55,6 +60,14 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                  <children>
+                                    <ImageView fx:id="selecionarJogar" fitHeight="47.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                       <image>
+                                          <Image url="@../assets/sword_right.png" />
+                                       </image>
+                                    </ImageView>
             		                  <JFXButton fx:id="btn" onAction="#onActionJogo" prefHeight="49.0" prefWidth="131.0" styleClass="btn" text="Jogar">
             		                     <padding>
             		                        <Insets left="5.0" />
@@ -64,11 +77,11 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <JFXButton onAction="#onActionAjuda" prefHeight="49.0" prefWidth="131.0" styleClass="btn" text="Opções" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                                 <children>
+                                    <ImageView fx:id="selecionarAjuda" fitHeight="47.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ImageView>
             		                  <JFXButton onAction="#onActionAjuda" prefHeight="49.0" prefWidth="131.0" styleClass="btn" text="Ajuda?" />
                                  </children>
                               </HBox>

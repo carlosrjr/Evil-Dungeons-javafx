@@ -742,8 +742,22 @@
                   </JFXButton>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="453.0">
+            <HBox alignment="CENTER" prefHeight="91.0" prefWidth="499.0">
                <children>
+                  <Label fx:id="lblLevel" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="72.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="292.0">
+               <children>
+                  <ImageView fx:id="sound" fitHeight="81.0" fitWidth="74.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/sound.png" />
+                     </image>
+                  </ImageView>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <ImageView fitHeight="168.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">

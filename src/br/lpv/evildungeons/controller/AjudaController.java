@@ -2,6 +2,7 @@ package br.lpv.evildungeons.controller;
 
 import static br.lpv.evildungeons.tools.Constantes.BASE_PATH;
 import static br.lpv.evildungeons.tools.Constantes.EVIL_DUNGEONS;
+import static br.lpv.evildungeons.tools.Constantes.PATH_SOUND_HIT_SPELL;
 
 import java.io.IOException;
 
@@ -11,9 +12,12 @@ import br.lpv.evildungeons.view.OnChangeScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -21,6 +25,8 @@ public class AjudaController {
 	private ChangeScreen changeScreen;
 	private BorderPane bp;
 	private AudioClip player;
+	private MediaPlayer soundEffect;
+	private Integer selecionado;
 	
 	@FXML
 	protected void initialize() {
@@ -32,13 +38,32 @@ public class AjudaController {
 		});
 	}
 	
+	@FXML
+	public void onKeyPressed(KeyEvent event) {
+		switch (event.getCode()) {
+		case BACK_SPACE:
+			selecionarOpcao();
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	private void selecionarOpcao() {
+		soundEffect = new MediaPlayer(new Media(getClass().getResource(BASE_PATH+PATH_SOUND_HIT_SPELL).toExternalForm()));
+		soundEffect.play();
+		onActionInicio();
+	}
+
 	/**
 	 * Solicita a mudança do <code>Scene</code> para o <code>Scene</code> do início.
 	 */
 	@FXML
 	public void onActionInicio() {
+		selecionado = 1;
 		changeScreen(EnumScenes.INICIO, BASE_PATH+EnumScenes.INICIO.getPath(), EnumScenes.INICIO.getDescricao(), EnumScenes.INICIO.getWidth(), EnumScenes.INICIO.getHeight());
-		changeScreen.changeScreen(EnumScenes.INICIO, bp, changeScreen, player);
+		changeScreen.changeScreen(EnumScenes.INICIO, bp, changeScreen, player, selecionado);
 	}
 
 	
@@ -85,6 +110,7 @@ public class AjudaController {
 			if(dado instanceof BorderPane) bp = (BorderPane)dado;
 			else if(dado instanceof ChangeScreen) changeScreen = (ChangeScreen)dado;
 			else if(dado instanceof AudioClip) player = (AudioClip)dado;
+			else if(dado instanceof Integer) selecionado = (Integer)dado;
 		}
 	}
 }

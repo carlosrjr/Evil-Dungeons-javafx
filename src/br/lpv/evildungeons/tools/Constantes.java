@@ -86,6 +86,7 @@ public class Constantes {
 	public static final String SPRITE_HERO = "view/assets/hero.png";
 	public static final String SPRITE_HEART = "view/assets/heart.png";
 	public static final String SPRITE_COIN = "view/assets/coin.png";
+	public static final String SPRITE_RUBY = "view/assets/ruby.png";
 
 	public static final String SPRITE_CACTO = "view/assets/cacto.png";
 	public static final String SPRITE_CRAB_HEAD = "view/assets/crab_head.png";
@@ -128,7 +129,7 @@ public class Constantes {
 
 	public static final String CACTO = "Cacto";
 	public static final String CRAB_HEAD = "Carangueijo";
-	public static final String FIRE_ELEMENTAL = "Elemental de fogo";
+	public static final String FIRE_ELEMENTAL = "Elemental";
 	
 	public static final String SWORD1 = "Excalibur";
 	public static final String SWORD2 = "Espada de Astora";
@@ -143,6 +144,7 @@ public class Constantes {
 	public static final String POTION_MANA = "Poção Azul";
 	public static final String POTION_POISON = "Veneno";
 	public static final String COIN = "Moeda de Ouro";
+	public static final String RUBY = "Moeda de Ouro";
 	
 	public static final String WEAPON = "Weapon";
 	public static final String SWORD = "Sword";

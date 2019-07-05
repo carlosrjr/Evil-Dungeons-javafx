@@ -176,5 +176,5 @@ public class Constantes {
 	public static final String BOSS = "BOSS";
 	
 	public static final int TEMPO_ANIMACAO = 1000;
-	public static final float RATE_ANIMACAO = 2f;
+	public static final float RATE_ANIMACAO = 5f;
 }

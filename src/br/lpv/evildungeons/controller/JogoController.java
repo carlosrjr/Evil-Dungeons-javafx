@@ -275,8 +275,14 @@ public class JogoController {
 					exibirCard(cards[0][1]);
 				}else
 					if(movimento == 2) {
-						cards[0][1] = gerarCard(0, 1);
+						cards[0][2].setPosicao(0, 1);
+						
+						cards[0][1] = cards[0][2];
+						
+						cards[0][2] = gerarCard(0, 2);
+						
 						exibirCard(cards[0][1]);
+						exibirCard(cards[0][2]);
 					} else {
 						cards[0][0].setPosicao(0, 1);
 						
@@ -327,7 +333,13 @@ public class JogoController {
 							exibirCard(cards[1][0]);
 						}else
 							if(movimento == 3) {
-								cards[1][0] = gerarCard(1, 0);
+								cards[0][0].setPosicao(1, 0);
+								
+								cards[1][0] = cards[0][0];
+								
+								cards[0][0] = gerarCard(0, 0);
+								
+								exibirCard(cards[0][0]);
 								exibirCard(cards[1][0]);
 							}else {
 								cards[2][0].setPosicao(1, 0);
@@ -383,8 +395,14 @@ public class JogoController {
 						}else
 							if(hero.getX() == 1 && hero.getY() == 2) {
 								if(movimento == 1) {
-									cards[1][2] = gerarCard(1, 2);
+									cards[2][2].setPosicao(1, 2);
+									
+									cards[1][2] = cards[2][2];
+									
+									cards[2][2] = gerarCard(2, 2);
+									
 									exibirCard(cards[1][2]);
+									exibirCard(cards[2][2]);
 								}else
 									if(movimento == 2) {
 										cards[0][2].setPosicao(1, 2);
@@ -455,7 +473,13 @@ public class JogoController {
 												exibirCard(cards[2][1]);
 											} else {
 												// move para direito
-												cards[2][1] = gerarItem(2, 1);
+												cards[2][0].setPosicao(2, 1);
+												
+												cards[2][1] = cards[2][0];
+												
+												cards[2][0] = gerarCard(2, 0);
+												
+												exibirCard(cards[2][0]);
 												exibirCard(cards[2][1]);
 											}
 									}else

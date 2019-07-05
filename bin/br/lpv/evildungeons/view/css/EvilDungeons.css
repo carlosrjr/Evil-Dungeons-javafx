@@ -1,0 +1,34 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.background-default {
+	/*-fx-background-image: url("../img/dungeonbricks.png");*/
+	-fx-background-color: #35383b;
+	-fx-background-image: url("../img/background.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover;
+}
+
+.btn {
+	-fx-background-color: #ffda05;
+}
+
+.btn-voltar{
+
+}
+
+.card {
+	-fx-background-color: #35383b;
+	-fx-border-color: #fff;
+}
+
+.hero {
+	-fx-background-color: #35383b;
+	-fx-border-color: #ffda05;
+	-fx-border-width: 5px;
+}
+
+.text{
+	-fx-text-fill: #fff;
+	-fx-font-weight: bold;
+	-fx-font-size: 25px;
+}

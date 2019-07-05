@@ -1,4 +1,4 @@
-# Evil-Dungeons-javafx
+﻿# Evil-Dungeons-javafx
 
 Evil Dungeons é um jogo de cartas baseado no jogo mobile Dungeons Cards:
 
@@ -10,7 +10,7 @@ Equipe:
 - Carlos Roberto
 - Daniel Ferreira 
 - Guilherme Magnus
-- Carlos Guimarâes
+- Carlos Guimarães
 
 Tecnologia usada: JavaFX
 

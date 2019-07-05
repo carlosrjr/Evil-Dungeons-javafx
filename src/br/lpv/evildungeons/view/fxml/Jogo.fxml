@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" prefHeight="906.0" prefWidth="798.0" stylesheets="@../css/EvilDungeons.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lpv.evildungeons.controller.JogoController">
+   <center>
+      <GridPane fx:id="gp" prefHeight="706.0" prefWidth="920.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane fx:id="painel00" prefHeight="200.0" prefWidth="200.0" styleClass="card">
+               <children>
+                  <VBox prefHeight="237.0" prefWidth="261.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="85.0">
+                                 <children>
+                                    <Label fx:id="lblHealth00" textFill="WHITE" />
+                                    <ImageView fx:id="heart00" fitHeight="22.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="item00" fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <HBox.margin>
+                                          <Insets right="-20.0" />
+                                       </HBox.margin></ImageView>
+                                    <ImageView fx:id="sprite00" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="221.0">
+                           <children>
+                              <VBox prefHeight="72.0" prefWidth="265.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="349.0">
+                                       <children>
+                                          <Label fx:id="nome00" alignment="CENTER" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valorItem00" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="-15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valor00" alignment="CENTER_RIGHT" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets top="-5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></Pane>
+            <Pane fx:id="painel01" prefHeight="200.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="1">
+               <children>
+                  <VBox prefHeight="237.0" prefWidth="261.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="85.0">
+                                 <children>
+                                    <Label fx:id="lblHealth01" textFill="WHITE" />
+                                    <ImageView fx:id="heart01" fitHeight="22.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="item01" fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <HBox.margin>
+                                          <Insets right="-20.0" />
+                                       </HBox.margin></ImageView>
+                                    <ImageView fx:id="sprite01" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="221.0">
+                           <children>
+                              <VBox prefHeight="72.0" prefWidth="265.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="349.0">
+                                       <children>
+                                          <Label fx:id="nome01" alignment="CENTER" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valorItem01" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="-15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valor01" alignment="CENTER_RIGHT" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets top="-5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></Pane>
+            <Pane fx:id="painel02" prefHeight="200.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="2">
+               <children>
+                  <VBox prefHeight="237.0" prefWidth="261.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="85.0">
+                                 <children>
+                                    <Label fx:id="lblHealth02" textFill="WHITE" />
+                                    <ImageView fx:id="heart02" fitHeight="22.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="item02" fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <HBox.margin>
+                                          <Insets right="-20.0" />
+                                       </HBox.margin></ImageView>
+                                    <ImageView fx:id="sprite02" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="221.0">
+                           <children>
+                              <VBox prefHeight="72.0" prefWidth="265.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="349.0">
+                                       <children>
+                                          <Label fx:id="nome02" alignment="CENTER" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valorItem02" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="-15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valor02" alignment="CENTER_RIGHT" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets top="-5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></Pane>
+            <Pane fx:id="painel10" prefHeight="200.0" prefWidth="200.0" styleClass="card" GridPane.rowIndex="1">
+               <children>
+                  <VBox prefHeight="237.0" prefWidth="261.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="85.0">
+                                 <children>
+                                    <Label fx:id="lblHealth10" textFill="WHITE" />
+                                    <ImageView fx:id="heart10" fitHeight="22.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="item10" fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <HBox.margin>
+                                          <Insets right="-20.0" />
+                                       </HBox.margin></ImageView>
+                                    <ImageView fx:id="sprite10" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="221.0">
+                           <children>
+                              <VBox prefHeight="72.0" prefWidth="265.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="349.0">
+                                       <children>
+                                          <Label fx:id="nome10" alignment="CENTER" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valorItem10" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="-15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valor10" alignment="CENTER_RIGHT" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets top="-5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></Pane>
+            <Pane fx:id="painel11" prefHeight="200.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <VBox prefHeight="237.0" prefWidth="261.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="85.0">
+                                 <children>
+                                    <Label fx:id="lblHealth11" textFill="WHITE" />
+                                    <ImageView fx:id="heart11" fitHeight="22.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="item11" fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <HBox.margin>
+                                          <Insets right="-20.0" />
+                                       </HBox.margin></ImageView>
+                                    <ImageView fx:id="sprite11" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="221.0">
+                           <children>
+                              <VBox prefHeight="72.0" prefWidth="265.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="349.0">
+                                       <children>
+                                          <Label fx:id="nome11" alignment="CENTER" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valorItem11" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="-15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valor11" alignment="CENTER_RIGHT" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets top="-5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></Pane>
+            <Pane fx:id="painel12" prefHeight="200.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <VBox prefHeight="237.0" prefWidth="261.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="85.0">
+                                 <children>
+                                    <Label fx:id="lblHealth12" textFill="WHITE" />
+                                    <ImageView fx:id="heart12" fitHeight="22.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="item12" fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <HBox.margin>
+                                          <Insets right="-20.0" />
+                                       </HBox.margin></ImageView>
+                                    <ImageView fx:id="sprite12" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="221.0">
+                           <children>
+                              <VBox prefHeight="72.0" prefWidth="265.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="349.0">
+                                       <children>
+                                          <Label fx:id="nome12" alignment="CENTER" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valorItem12" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="-15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valor12" alignment="CENTER_RIGHT" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets top="-5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></Pane>
+            <Pane fx:id="painel20" prefHeight="200.0" prefWidth="200.0" styleClass="card" GridPane.rowIndex="2">
+               <children>
+                  <VBox prefHeight="237.0" prefWidth="261.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="85.0">
+                                 <children>
+                                    <Label fx:id="lblHealth20" textFill="WHITE" />
+                                    <ImageView fx:id="heart20" fitHeight="22.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="item20" fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <HBox.margin>
+                                          <Insets right="-20.0" />
+                                       </HBox.margin></ImageView>
+                                    <ImageView fx:id="sprite20" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="221.0">
+                           <children>
+                              <VBox prefHeight="72.0" prefWidth="265.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="349.0">
+                                       <children>
+                                          <Label fx:id="nome20" alignment="CENTER" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valorItem20" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="-15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valor20" alignment="CENTER_RIGHT" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets top="-5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></Pane>
+            <Pane fx:id="painel21" prefHeight="200.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <VBox prefHeight="237.0" prefWidth="261.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="85.0">
+                                 <children>
+                                    <Label fx:id="lblHealth21" textFill="WHITE" />
+                                    <ImageView fx:id="heart21" fitHeight="22.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="item21" fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <HBox.margin>
+                                          <Insets right="-20.0" />
+                                       </HBox.margin></ImageView>
+                                    <ImageView fx:id="sprite21" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="221.0">
+                           <children>
+                              <VBox prefHeight="72.0" prefWidth="265.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="349.0">
+                                       <children>
+                                          <Label fx:id="nome21" alignment="CENTER" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valorItem21" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="-15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valor21" alignment="CENTER_RIGHT" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets top="-5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></Pane>
+            <Pane fx:id="painel22" prefHeight="200.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <VBox prefHeight="237.0" prefWidth="261.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="85.0">
+                                 <children>
+                                    <Label fx:id="lblHealth22" textFill="WHITE" />
+                                    <ImageView fx:id="heart22" fitHeight="22.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="221.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="item22" fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <HBox.margin>
+                                          <Insets right="-20.0" />
+                                       </HBox.margin></ImageView>
+                                    <ImageView fx:id="sprite22" fitHeight="150.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="221.0">
+                           <children>
+                              <VBox prefHeight="72.0" prefWidth="265.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="349.0">
+                                       <children>
+                                          <Label fx:id="nome22" alignment="CENTER" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valorItem22" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="-15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="valor22" alignment="CENTER_RIGHT" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets top="-5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></Pane>
+         </children>
+      </GridPane>
+   </center>
+   <top>
+      <HBox fx:id="infoBar" prefHeight="69.0" prefWidth="660.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="344.0" styleClass="bar">
+               <children>
+                  <JFXButton onAction="#onActionInicio" prefHeight="62.0" prefWidth="58.0" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-voltar" />
+                     </styleClass>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/arrow-left-black.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="453.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="168.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/coin.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lblCoin" alignment="CENTER" prefHeight="36.0" prefWidth="104.0" styleClass="lblCoin" text="0" textAlignment="CENTER" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="-5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="23.0" />
+                           </font></Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

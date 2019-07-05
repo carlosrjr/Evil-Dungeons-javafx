@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ap" prefHeight="611.0" prefWidth="499.0" styleClass="background-default" stylesheets="@../css/EvilDungeons.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lpv.evildungeons.controller.InicioController">
+   <children>
+      <VBox prefHeight="534.0" prefWidth="529.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="123.0" prefWidth="621.0">
+               <children>
+                  <VBox prefHeight="186.0" prefWidth="526.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="499.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/titulo.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="354.0" prefWidth="304.0">
+               <children>
+                  <JFXButton fx:id="btn" onAction="#onActionJogo" prefHeight="49.0" prefWidth="131.0" styleClass="btn" text="Jogar">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton onAction="#onActionAjuda" prefHeight="49.0" prefWidth="131.0" styleClass="btn" text="Ajuda?">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="489.0" prefWidth="652.0">
+               <children>
+                  <ImageView fitHeight="172.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/hero.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="50.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="62.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/sword1.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="90.0" left="-87.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="301.0" prefWidth="399.0">
+                     <children>
+                        <ImageView fitHeight="137.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/goblin.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="60.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="125.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/skeleton.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="141.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/goblin.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

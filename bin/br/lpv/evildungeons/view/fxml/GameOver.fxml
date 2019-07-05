@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="646.0" stylesheets="@../css/EvilDungeons.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lpv.evildungeons.controller.GameOverController">
+   <children>
+      <ImageView fitHeight="534.0" fitWidth="648.0" layoutX="-1.0" layoutY="-5.0" pickOnBounds="true" />
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="21.0" prefHeight="66.0" prefWidth="303.0" text="GAME OVER" textFill="#110000">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+         <effect>
+            <DropShadow color="#fffdfd" height="47.69" radius="24.8275" spread="0.75" width="53.62" />
+         </effect>
+      </Label>
+      <Label alignment="TOP_CENTER" layoutX="72.0" layoutY="138.0" prefHeight="340.0" prefWidth="537.0" text="Caro guerreiro sua jornada foi &#10;árdua e a batalha foi dura,&#10;mas infelizmente chegou ao fim!&#10;Nem tudo está perdido você &#10;pode voltar ao campo de batalha!&#10;Que os Deuses de Evil Dungeons&#10;lhes tragam mais sorte da &#10;próxima vez!" textAlignment="CENTER" textFill="#000000ee" wrapText="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow color="#fffefe" height="31.38" radius="15.559999999999999" spread="0.52" width="32.86" />
+         </effect>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="330.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/coin.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="moedasColetadas" alignment="CENTER_RIGHT" layoutX="213.0" layoutY="103.0" prefHeight="36.0" prefWidth="121.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="149.0" layoutY="453.0" onAction="#onActionInicio" prefHeight="50.0" prefWidth="127.0" styleClass="btn" text="Menu" />
+      <JFXButton layoutX="309.0" layoutY="453.0" onAction="#onActionJogo" prefHeight="50.0" prefWidth="231.0" styleClass="btn" text="Jogar novamente" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="732.0" stylesheets="@../css/EvilDungeons.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lpv.evildungeons.controller.AjudaController">
+   <children>
+      <ImageView fitHeight="489.0" fitWidth="734.0" layoutX="-1.0" layoutY="-5.0" pickOnBounds="true" />
+      <Label layoutX="34.0" layoutY="10.0" prefHeight="35.0" prefWidth="84.0" text="AJUDA" textFill="#110000">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <effect>
+            <DropShadow color="#fffdfd" height="47.69" radius="24.8275" spread="0.75" width="53.62" />
+         </effect>
+      </Label>
+      <Label alignment="TOP_LEFT" layoutX="44.0" layoutY="48.0" prefHeight="421.0" prefWidth="676.0" text="Para jogar use as teclas de seta do teclado. &#10;&#10;O objetivo é destruir os monstros e coletar moedas.&#10;&#10;Colete as armas para aumentar seu poder de ataque.&#10;&#10;Lembre-se em uma batalha quem tem mais vida vence.&#10;&#10;Se estiver em apuros as poções podem lhe ajudar, &#10;&#10;porém cuidado com os venenos.&#10;" textFill="#000000ee" wrapText="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow color="#fffefe" height="31.38" radius="15.559999999999999" spread="0.52" width="32.86" />
+         </effect>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <ImageView fitHeight="58.0" fitWidth="78.0" layoutX="545.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/setas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="31.0" layoutX="367.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/goblin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="42.0" layoutX="574.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="42.0" layoutX="175.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="42.0" layoutX="562.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="42.0" layoutX="338.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/potion_health.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="44.0" layoutX="338.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/potion_poison.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="361.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/potion_mana.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="637.0" layoutY="411.0" onAction="#onActionInicio" prefHeight="50.0" prefWidth="49.0" styleClass="btn">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/arrow-left-black.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>

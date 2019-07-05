@@ -144,7 +144,6 @@ public class EvilDugeonsController {
 	 */
 	public void changeScreen(EnumScenes scene, String path, String titulo, double width, double height) {
 		try {
-			
 			// Obtendo o loader.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource(path));

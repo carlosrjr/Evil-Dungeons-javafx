@@ -87,6 +87,10 @@ public class Constantes {
 	public static final String SPRITE_HEART = "view/assets/heart.png";
 	public static final String SPRITE_COIN = "view/assets/coin.png";
 
+	public static final String SPRITE_CACTO = "view/assets/cacto.png";
+	public static final String SPRITE_CRAB_HEAD = "view/assets/crab_head.png";
+	public static final String SPRITE_FIRE_ELEMENTAL = "view/assets/fire_elemental.png";
+
 	public static final String SPRITE_GOBLIN = "view/assets/goblin.png";
 	public static final String SPRITE_MOSCA = "view/assets/mosca.png";
 	public static final String SPRITE_SKELETON = "view/assets/skeleton.png";
@@ -121,6 +125,10 @@ public class Constantes {
 	public static final String GOBLIN = "Goblin";
 	public static final String MOSCA = "Mosca";
 	public static final String SKELETON = "Esqueleto";
+
+	public static final String CACTO = "Cacto";
+	public static final String CRAB_HEAD = "Carangueijo";
+	public static final String FIRE_ELEMENTAL = "Elemental de fogo";
 	
 	public static final String SWORD1 = "Excalibur";
 	public static final String SWORD2 = "Espada de Astora";
@@ -149,13 +157,13 @@ public class Constantes {
 	
 	public static final int MAXIMO_MONSTROS = 3;
 	public static final int MAXIMO_POCOES = 2;
-	public static final int MAXIMO_ARMAS = 2;
+	public static final int MAXIMO_ARMAS = 3;
 	
 	public static final int MONSTER_LEVEL_1[] = {1,2,3,4,5};
-	public static final int MONSTER_LEVEL_2[] = {1,2,3,4,5,6,7,8,9,10};
-	public static final int MONSTER_LEVEL_3[] = {4,5,6,7,8,9,10,11,12,13,14,15};
-	public static final int MONSTER_LEVEL_4[] = {7,8,9,10,11,12,13,14,15, 20, 25, 30, 35};
-	public static final int MONSTER_BOSS[] = {50, 80, 100};
+	public static final int MONSTER_LEVEL_2[] = {1,2,3,4,5,6,7};
+	public static final int MONSTER_LEVEL_3[] = {4,5,6,7,8,9,10,11,12};
+	public static final int MONSTER_LEVEL_4[] = {7,8,9,10,11,12,13,14,15, 18};
+	public static final int MONSTER_BOSS[] = {30, 40, 60};
 
 	public static final int BOSS_TURN = 100;
 	public static final int LEVEL1_TURN = 50;

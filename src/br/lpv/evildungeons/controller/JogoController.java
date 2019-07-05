@@ -667,11 +667,14 @@ public class JogoController {
 		/*
 		 * 0 - Goblin
 		 * 1 - Skeleton
-		 * 2 - Mosca 
+		 * 2 - Mosca
+		 * 3 - Cacto
+		 * 4 - CrabHead
+		 * 5 - Fire Elemental
 		 */
 		
 		String name = "";
-		int gerarHumanoid = (int)(Math.random()*3);
+		int gerarHumanoid = (int)(Math.random()*6);
 		numeroMonstro++;
 		int hp[];
 		
@@ -701,6 +704,15 @@ public class JogoController {
 		case 2:
 			name = ((bossTurn) ? String.format("%s (%s)", MOSCA, BOSS) : MOSCA);
 			return new Humanoid(name, BASE_PATH+SPRITE_MOSCA, x, y, hp[(int)(Math.random()*(hp.length-1))]);
+		case 3:
+			name = ((bossTurn) ? String.format("%s (%s)", CACTO, BOSS) : CACTO);
+			return new Humanoid(name, BASE_PATH+SPRITE_CACTO, x, y, hp[(int)(Math.random()*(hp.length-1))]);
+		case 4:
+			name = ((bossTurn) ? String.format("%s (%s)", CRAB_HEAD, BOSS) : CRAB_HEAD);
+			return new Humanoid(name, BASE_PATH+SPRITE_CRAB_HEAD, x, y, hp[(int)(Math.random()*(hp.length-1))]);
+		case 5:
+			name = ((bossTurn) ? String.format("%s (%s)", FIRE_ELEMENTAL, BOSS) : FIRE_ELEMENTAL);
+			return new Humanoid(name, BASE_PATH+SPRITE_FIRE_ELEMENTAL, x, y, hp[(int)(Math.random()*(hp.length-1))]);
 			
 		default:
 			name = ((bossTurn) ? String.format("%s (%s)", GOBLIN, BOSS) : GOBLIN);
